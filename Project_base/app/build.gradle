@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 def config = rootProject.ext.dependencies
 android {
@@ -42,4 +43,6 @@ dependencies {
     testImplementation config.junit
     androidTestImplementation config.test_junit
     androidTestImplementation config.test_espresso
+
+    kapt config.permission_processor
 }

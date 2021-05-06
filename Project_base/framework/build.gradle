@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'//kotlin 注解处理
 }
 def androidVersion = rootProject.ext.android
 def config = rootProject.ext.dependencies
@@ -42,4 +43,6 @@ dependencies {
     testImplementation config.junit
     androidTestImplementation config.test_junit
     androidTestImplementation config.test_espresso
+
+    api config.permission
 }
