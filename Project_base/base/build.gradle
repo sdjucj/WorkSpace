@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'//kotlin 注解处理
+}
+def androidVersion = rootProject.ext.android
+def config = rootProject.ext.dependencies
+android {
+    compileSdkVersion androidVersion.compileSdkVersion
+    buildToolsVersion androidVersion.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion androidVersion.minSdkVersion
+        targetSdkVersion androidVersion.targetSdkVersion
+        versionCode androidVersion.versionCode
+        versionName androidVersion.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation config.kotlin
+    implementation config.core
+    implementation config.appcompat
+    implementation config.material
+    testImplementation config.junit
+    androidTestImplementation config.test_junit
+    androidTestImplementation config.test_espresso
+
+    api project(":framework")
+}
