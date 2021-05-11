@@ -45,4 +45,6 @@ dependencies {
     androidTestImplementation config.test_espresso
 
     kapt config.permission_processor
+
+    implementation project(":base")
 }

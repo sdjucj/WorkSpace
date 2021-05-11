@@ -10,6 +10,34 @@ import java.lang.reflect.*
  */
 
 /**
+ * 获取javaClass
+ *
+ * @param className 类名
+ * @return javaClass
+ */
+@Suppress("UNCHECKED_CAST")
+fun <T> forName(className: String): Class<T> {
+    try {
+        return Class.forName(className) as Class<T>
+    } catch (e: ClassNotFoundException) {
+        e.printStackTrace()
+        throw ClassNotFoundException("forName class no found")
+    }
+}
+
+
+/**
+ * 创建构造函数
+ *
+ * @param className 类名
+ * @param args 参数
+ * @return T 对象
+ */
+fun <T> newInstance(className: String, vararg args: Any?): T {
+    return newInstance(forName(className), args)
+}
+
+/**
  * 创建构造函数
  *
  * @param clazz javaClass
@@ -29,7 +57,7 @@ fun <T> newInstance(clazz: Class<T>, vararg args: Any?): T {
  * @return 成员变量
  */
 fun <T> getField(className: String, fieldName: String, vararg args: Any?): T? {
-    return getField(Class.forName(className), fieldName, *args)
+    return getField(forName<T>(className), fieldName, *args)
 }
 
 /**

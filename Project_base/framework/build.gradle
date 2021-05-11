@@ -45,4 +45,38 @@ dependencies {
     androidTestImplementation config.test_espresso
 
     api config.permission
+
+    api config.loadsir
+
+    api config.gson
+    api config.rxjava
+    api(config.rxandroid) {
+        exclude module: "rxjava"
+    }
+    api(config.retrofit2) {
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+    }
+    api(config.retrofit2_converter_gson) {
+        exclude module: 'gson'
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+        exclude module: 'retrofit'
+    }
+
+    api(config.retrofit2_converter_xml) {
+        exclude module: 'retrofit'
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+    }
+
+    api(config.retrofit2_adapter_rxjava) {
+        exclude module: 'rxjava'
+        exclude module: 'okhttp'
+        exclude module: 'retrofit'
+        exclude module: 'okio'
+    }
+    api config.okhttp3
+    api config.okhttp3_logging_interceptor
+
 }
