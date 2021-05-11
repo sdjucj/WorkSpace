@@ -1,13 +1,17 @@
 package com.cj.base.activity
 
+import android.R
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+
 
 /**
  * BaseActivity
@@ -39,8 +43,9 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun initListener()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         super.onCreate(savedInstanceState)
-        setRootView(getLayoutId())
+        initContentView(getLayoutId())
         initData(savedInstanceState)
         initView()
         initListener()
@@ -60,8 +65,15 @@ abstract class BaseActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(event)
     }
 
-    protected fun setRootView(@LayoutRes layoutId:Int){
+    protected open fun initContentView(@LayoutRes layoutId: Int) {
         setContentView(layoutId)
+    }
+
+    /**
+     * 获取Activity的根布局
+     */
+    protected fun getRootView(): View? {
+        return findViewById<ViewGroup>(R.id.content).getChildAt(0)
     }
 
     //软键盘是否显示

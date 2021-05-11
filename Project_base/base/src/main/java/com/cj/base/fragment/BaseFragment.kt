@@ -69,7 +69,7 @@ abstract class BaseFragment : Fragment() {
         mBackPressedCallback.remove()
     }
 
-    protected fun inflateLayout(
+    protected open fun inflateLayout(
         inflater: LayoutInflater,
         container: ViewGroup?, @LayoutRes layoutId: Int
     ): View {
