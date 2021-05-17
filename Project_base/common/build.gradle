@@ -1,21 +1,22 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'kotlin-kapt'//kotlin 注解处理
 }
+def androidVersion = rootProject.ext.android
 def config = rootProject.ext.dependencies
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion androidVersion.compileSdkVersion
+    buildToolsVersion androidVersion.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.cj.project"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion androidVersion.minSdkVersion
+        targetSdkVersion androidVersion.targetSdkVersion
+        versionCode androidVersion.versionCode
+        versionName androidVersion.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -31,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -39,12 +43,9 @@ dependencies {
     implementation config.core
     implementation config.appcompat
     implementation config.material
-    implementation config.constraintLayout
     testImplementation config.junit
     androidTestImplementation config.test_junit
     androidTestImplementation config.test_espresso
 
-    kapt config.permission_processor
-
-    implementation project(":common")
+    api project(":base")
 }

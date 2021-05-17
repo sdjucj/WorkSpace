@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="Weather24HoursView">
+        <attr name="x_scale" format="dimension" />
+        <attr name="y_scale" format="dimension" />
+        <attr name="y_label_width" format="dimension" />
+
+        <attr name="time_text_size" format="dimension" />
+        <attr name="history_time_text_color" format="color" />
+        <attr name="feature_time_text_color" format="color" />
+
+        <attr name="wind_power_label_text_size" format="dimension" />
+        <attr name="wind_power_label_text_color" format="color" />
+        <attr name="wind_power_text_size" format="dimension" />
+        <attr name="wind_power_text_color" format="color" />
+
+        <attr name="air_quality_label_text_size" format="dimension" />
+        <attr name="air_quality_label_text_color" format="color" />
+        <attr name="air_quality_text_size" format="dimension" />
+
+        <attr name="temperature_label_text_size" format="dimension" />
+        <attr name="temperature_label_text_color" format="color" />
+
+        <attr name="weather_popup_window_color" format="color" />
+        <attr name="weather_popup_window_text_color" format="color" />
+        <attr name="weather_popup_window_text_size" format="dimension" />
+
+        <attr name="history_temperature_line_chart_color" format="color" />
+        <attr name="feature_temperature_line_chart_color" format="color" />
+    </declare-styleable>
+
+</resources>

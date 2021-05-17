@@ -4,15 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#22000000">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.cj.common.widget.WeatherLineChartView
+        android:id="@+id/weather_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fadeScrollbars="false"
+        tools:ignore="MissingConstraints"
+        android:background="@color/white">
+        <com.cj.common.widget.Weather24HoursView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:wind_power_label_text_color="@android:color/holo_red_dark"
+            android:layout_margin="@dimen/padding_or_margin_10dp"/>
+    </com.cj.common.widget.WeatherLineChartView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

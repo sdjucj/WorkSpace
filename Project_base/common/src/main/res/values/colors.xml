@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="air_quality_excellent_selected">#FF43CD80</color>
+    <color name="air_quality_excellent_unselected">#FF54FF9F</color>
+    <color name="air_quality_good_selected">#fffdd13d</color>
+    <color name="air_quality_good_unselected">#fffee799</color>
+    <color name="air_quality_medium_selected">#FFCD6839</color>
+    <color name="air_quality_medium_unselected">#FFFF8247</color>
+    <color name="air_quality_poor_selected">#FF4500</color>
+    <color name="air_quality_poor_unselected">#FF6347</color>
+</resources>

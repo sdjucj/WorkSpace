@@ -2,3 +2,4 @@ include ':base'
 include ':framework'
 include ':app'
 rootProject.name = "Project_base"
+include ':common'
