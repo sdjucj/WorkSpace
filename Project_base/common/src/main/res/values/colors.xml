@@ -16,4 +16,8 @@
 
     <color name="line_separator_color">#FFE1ECF4</color>
     <color name="item_selected_background">#FFF1F1F1</color>
+
+    <color name="time_line_color">#ffE0F0FF</color>
+    <color name="current_time_line_color">#ff51D0A5</color>
+    <color name="current_temperature_point_color">#ff0ACDD0</color>
 </resources>

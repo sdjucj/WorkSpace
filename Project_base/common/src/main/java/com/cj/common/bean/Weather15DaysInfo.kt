@@ -11,7 +11,7 @@ package com.cj.common.bean
  * @param maxTemperature 15天中最高温
  * @param dayWeatherInfoList 天气信息列表
  */
-data class Weather15DaysInfo(
+data class WeatherDaysInfo(
     var minTemperature:Int,
     var maxTemperature:Int,
     var dayWeatherInfoList: ArrayList<DayWeatherInfo>,

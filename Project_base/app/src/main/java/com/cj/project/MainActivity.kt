@@ -6,11 +6,12 @@ import android.util.Log
 import android.util.SparseArray
 import com.cj.common.bean.DayWeatherInfo
 import com.cj.common.bean.HourlyWeatherInfo
-import com.cj.common.bean.Weather15DaysInfo
+import com.cj.common.bean.WeatherDaysInfo
 import com.cj.common.bean.Weather24HoursInfo
 import com.cj.common.enums.EnumAirQuality
 import com.cj.common.enums.EnumWeather
 import com.cj.common.enums.EnumWeatherIcon
+import com.cj.common.widget.weather.Temperature40DaysView
 import com.cj.common.widget.weather.Weather15DaysView
 import com.cj.common.widget.weather.WeatherLineChartView
 import com.cj.framework.http.HttpClient
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         weather24HoursView()
         weather15DaysView()
+        temperature40DaysView()
         //httpClient()
     }
 
@@ -290,7 +292,7 @@ class MainActivity : AppCompatActivity() {
             EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "2级",
             null))
 
-        val info = Weather15DaysInfo(15,31,data)
+        val info = WeatherDaysInfo(15,31,data)
         weatherView.setWeatherData(info)
         findViewById<Weather15DaysView>(R.id.weather_15_info).setOnItemClickListener(object :Weather15DaysView.OnItemClickListener{
             override fun onItemClick(position: Int, item: DayWeatherInfo?) {
@@ -298,5 +300,179 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun temperature40DaysView() {
+        val view = findViewById<Temperature40DaysView>(R.id.temperature_40_days)
+        val data = ArrayList<DayWeatherInfo>()
+        data.add(DayWeatherInfo("05/16", "昨天", 15, 23,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "西北风", "4-5级",
+            EnumAirQuality.AIR_QUALITY_EXCELLENT))
+        data.add(DayWeatherInfo("05/17", "今天", 17, 23,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "西北风", "1级",
+            EnumAirQuality.AIR_QUALITY_EXCELLENT))
+        data.add(DayWeatherInfo("05/18", "星期二", 17, 25,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "1级",
+            EnumAirQuality.AIR_QUALITY_GOOD))
+        data.add(DayWeatherInfo("05/19", "星期三", 18, 26,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "3-4级",
+            EnumAirQuality.AIR_QUALITY_GOOD))
+        data.add(DayWeatherInfo("05/20", "星期四", 20, 26,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东北风", "1级",
+            EnumAirQuality.AIR_QUALITY_HEAVY))
+        data.add(DayWeatherInfo("05/21", "星期五", 20, 30,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "1级",
+            EnumAirQuality.AIR_QUALITY_HEAVY))
+        data.add(DayWeatherInfo("05/22", "星期六", 21, 31,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "2级",
+            null))
+        data.add(DayWeatherInfo("05/23", "星期日", 20, 24,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "西风", "2级",
+            null))
+        data.add(DayWeatherInfo("05/24", "星期一", 18, 28,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "2级",
+            null))
+        data.add(DayWeatherInfo("05/25", "星期二", 20, 26,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "3-4级",
+            null))
+        data.add(DayWeatherInfo("05/26", "星期三", 20, 24,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东北风", "1级",
+            null))
+        data.add(DayWeatherInfo("05/27", "星期四", 24, 27,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "南风", "1级",
+            null))
+        data.add(DayWeatherInfo("05/28", "星期无", 17, 27,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "1级",
+            null))
+        data.add(DayWeatherInfo("05/29", "星期六", 18, 25,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "1级",
+            null))
+        data.add(DayWeatherInfo("05/30", "星期日", 18, 22,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "北风", "2级",
+            null))
+        data.add(DayWeatherInfo("05/31", "星期一", 20, 28,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "2级",
+            null))
+        data.add(DayWeatherInfo("06/01", "昨天", 15, 23,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "西北风", "4-5级",
+            EnumAirQuality.AIR_QUALITY_EXCELLENT))
+        data.add(DayWeatherInfo("06/02", "今天", 17, 23,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "西北风", "1级",
+            EnumAirQuality.AIR_QUALITY_EXCELLENT))
+        data.add(DayWeatherInfo("06/03", "星期二", 17, 25,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "1级",
+            EnumAirQuality.AIR_QUALITY_GOOD))
+        data.add(DayWeatherInfo("06/04", "星期三", 18, 26,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "3-4级",
+            EnumAirQuality.AIR_QUALITY_GOOD))
+        data.add(DayWeatherInfo("06/05", "星期四", 20, 26,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东北风", "1级",
+            EnumAirQuality.AIR_QUALITY_HEAVY))
+        data.add(DayWeatherInfo("06/06", "星期五", 20, 30,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "1级",
+            EnumAirQuality.AIR_QUALITY_HEAVY))
+        data.add(DayWeatherInfo("06/07", "星期六", 21, 31,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "2级",
+            null))
+        data.add(DayWeatherInfo("06/08", "星期日", 20, 24,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "西风", "2级",
+            null))
+        data.add(DayWeatherInfo("06/09", "星期一", 18, 28,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "2级",
+            null))
+        data.add(DayWeatherInfo("06/10", "星期二", 20, 26,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "3-4级",
+            null))
+        data.add(DayWeatherInfo("06/11", "星期三", 20, 24,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东北风", "1级",
+            null))
+        data.add(DayWeatherInfo("06/12", "星期四", 24, 27,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "南风", "1级",
+            null))
+        data.add(DayWeatherInfo("06/13", "星期无", 17, 27,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "1级",
+            null))
+        data.add(DayWeatherInfo("06/14", "星期六", 18, 25,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "1级",
+            null))
+        data.add(DayWeatherInfo("06/15", "星期日", 18, 22,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "北风", "2级",
+            null))
+        data.add(DayWeatherInfo("06/16", "星期一", 20, 28,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "2级",
+            null))
+        data.add(DayWeatherInfo("06/17", "星期日", 20, 24,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "西风", "2级",
+            null))
+        data.add(DayWeatherInfo("06/18", "星期一", 18, 28,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "2级",
+            null))
+        data.add(DayWeatherInfo("06/19", "星期二", 20, 26,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "3-4级",
+            null))
+        data.add(DayWeatherInfo("06/20", "星期三", 20, 24,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东北风", "1级",
+            null))
+        data.add(DayWeatherInfo("06/21", "星期四", 24, 27,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "南风", "1级",
+            null))
+        data.add(DayWeatherInfo("06/22", "星期无", 17, 27,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东风", "1级",
+            null))
+        data.add(DayWeatherInfo("06/23", "星期六", 18, 25,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "东南风", "1级",
+            null))
+        data.add(DayWeatherInfo("06/24", "星期日", 18, 22,
+            EnumWeather.CLOUDY, EnumWeather.CLOUDY,
+            EnumWeatherIcon.W1, EnumWeatherIcon.W1, "北风", "2级",
+            null))
+
+        val info = WeatherDaysInfo(22,31,data)
+        view.updateData(info)
+        /*findViewById<Weather15DaysView>(R.id.weather_15_info).setOnItemClickListener(object :Weather15DaysView.OnItemClickListener{
+            override fun onItemClick(position: Int, item: DayWeatherInfo?) {
+                Log.i("chen","p = $position , date = ${item?.date}")
+            }
+
+        })*/
     }
 }

@@ -11,7 +11,7 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.cj.common.R
 import com.cj.common.bean.DayWeatherInfo
-import com.cj.common.bean.Weather15DaysInfo
+import com.cj.common.bean.WeatherDaysInfo
 import com.cj.common.enums.EnumAirQuality
 import com.cj.framework.bean.Point2D
 import com.cj.framework.utils.dp2px
@@ -28,18 +28,18 @@ import kotlin.math.ceil
  */
 class Weather15DaysView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     HorizontalScrollView(context, attrs, defStyleAttr),
-    IWeatherLineChartView<Weather15DaysInfo> {
+    IWeatherLineChartView<WeatherDaysInfo> {
 
     companion object {
         private const val TAG = "Weather15DaysView"
 
-        private val DEFAULT_ITEM_WIDTH = sp2px(50f).toFloat()
+        private val DEFAULT_ITEM_WIDTH = dp2px(50f).toFloat()
         private val DEFAULT_WEATHER_ICON_HEIGHT = dp2px(25f).toFloat()
         private val DEFAULT_TEMPERATURE_LINE_CHART_HEIGHT = dp2px(60f).toFloat()
         private val DEFAULT_TEXT_SIZE = sp2px(14f).toFloat()
         private val DEFAULT_WIND_POWER_TEXT_SIZE = sp2px(12f).toFloat()
         private val DEFAULT_AIR_QUALITY_TEXT_SIZE = sp2px(12f).toFloat()
-        private val DEFAULT_SEPARATOR = sp2px(10f).toFloat()
+        private val DEFAULT_SEPARATOR = dp2px(10f).toFloat()
 
         private val DEFAULT_TEXT_COLOR = getColor(R.color.text_color_black)
         private val DEFAULT_MIN_TEMPERATURE_LINE_CHART_COLOR =
@@ -85,7 +85,7 @@ class Weather15DaysView(context: Context, attrs: AttributeSet?, defStyleAttr: In
     private var mAirQualityTextColor = DEFAULT_AIR_QUALITY_TEXT_COLOR//空气质量文字颜色
     private var mAirQualityTextSize = DEFAULT_AIR_QUALITY_TEXT_SIZE//空气质量文字大小
 
-    private var mData: Weather15DaysInfo? = null
+    private var mData: WeatherDaysInfo? = null
     private val mMinTemperaturePointList = ArrayList<Point2D>()
     private val mMaxTemperaturePointList = ArrayList<Point2D>()
     private var mWidth: Int = 0
@@ -156,7 +156,7 @@ class Weather15DaysView(context: Context, attrs: AttributeSet?, defStyleAttr: In
         //do nothing
     }
 
-    override fun setWeatherData(data: Weather15DaysInfo?) {
+    override fun setWeatherData(data: WeatherDaysInfo?) {
         mData = data
         invalidate()
     }

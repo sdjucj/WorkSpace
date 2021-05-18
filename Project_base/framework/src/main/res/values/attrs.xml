@@ -5,11 +5,14 @@
     <attr name="wind_power_text_size" format="dimension" />
     <attr name="wind_power_text_color" format="color" />
     <attr name="air_quality_text_size" format="dimension" />
+    <attr name="x_scale" format="dimension" />
+    <attr name="y_scale" format="dimension" />
+    <attr name="y_label_width" format="dimension" />
 
     <declare-styleable name="Weather24HoursView">
-        <attr name="x_scale" format="dimension" />
-        <attr name="y_scale" format="dimension" />
-        <attr name="y_label_width" format="dimension" />
+        <attr name="x_scale" />
+        <attr name="y_scale" />
+        <attr name="y_label_width" />
 
         <attr name="time_text_size" format="dimension" />
         <attr name="history_time_text_color" format="color" />
@@ -40,8 +43,8 @@
         <attr name="item_text_size" format="dimension" />
         <attr name="item_text_color" format="color" />
 
-        <attr name="weather_icon_height" format="dimension"/>
-        <attr name="temperature_line_chart_height" format="dimension"/>
+        <attr name="weather_icon_height" format="dimension" />
+        <attr name="temperature_line_chart_height" format="dimension" />
 
         <attr name="min_temperature_line_chart_color" format="color" />
         <attr name="max_temperature_line_chart_color" format="color" />
@@ -57,5 +60,19 @@
         <attr name="air_quality_text_size" />
         <attr name="air_quality_text_color" format="color" />
 
+    </declare-styleable>
+
+    <declare-styleable name="Temperature40DaysView">
+        <attr name="y_scale"/>
+        <attr name="y_label_width" />
+        <attr name="popup_window_color" format="color" />
+        <attr name="popup_window_text_color" format="color" />
+        <attr name="temperature_text_color" format="color" />
+        <attr name="date_text_color" format="color" />
+        <attr name="temperature_line_chart_color" format="color" />
+        <attr name="time_line_color" format="color" />
+        <attr name="current_time_line_color" format="color" />
+        <attr name="current_temperature_point_color" format="color" />
+        <attr name="text_size" format="dimension" />
     </declare-styleable>
 </resources>
