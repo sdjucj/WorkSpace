@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="air_quality_excellent_selected">#FF43CD80</color>
-    <color name="air_quality_excellent_unselected">#FF54FF9F</color>
+    <color name="air_quality_excellent_unselected">#FF51D0A5</color>
     <color name="air_quality_good_selected">#fffdd13d</color>
-    <color name="air_quality_good_unselected">#fffee799</color>
-    <color name="air_quality_medium_selected">#FFCD6839</color>
-    <color name="air_quality_medium_unselected">#FFFF8247</color>
-    <color name="air_quality_poor_selected">#FF4500</color>
-    <color name="air_quality_poor_unselected">#FF6347</color>
+    <color name="air_quality_good_unselected">#ffFFC300</color>
+    <color name="air_quality_slightly_selected">#FFCD6839</color>
+    <color name="air_quality_slightly_unselected">#FFFF9400</color>
+    <color name="air_quality_heavy_selected">#FF4500</color>
+    <color name="air_quality_heavy_unselected">#FF6347</color>
+
+    <color name="max_temperature_line_chart_color">#FFB51A64</color>
+    <color name="min_temperature_line_chart_color">#FF1DCCF4</color>
+    <color name="min_temperature_point_color">#FF31A1FF</color>
+    <color name="max_temperature_point_color">#FFEA4B70</color>
+
+    <color name="line_separator_color">#FFE1ECF4</color>
+    <color name="item_selected_background">#FFF1F1F1</color>
 </resources>

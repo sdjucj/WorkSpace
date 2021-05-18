@@ -2,8 +2,8 @@
 <resources>
     <string name="weather_air_quality_excellent">优</string>
     <string name="weather_air_quality_good">良</string>
-    <string name="weather_air_quality_medium">中</string>
-    <string name="weather_air_quality_poor">差</string>
+    <string name="weather_air_quality_slightly">轻度</string>
+    <string name="weather_air_quality_heavy">重度</string>
 
     <string name="weather_sunny">晴</string>
     <string name="weather_mostly_sunny">大部晴朗</string>

@@ -17,6 +17,6 @@ enum class EnumAirQuality(
 
     AIR_QUALITY_EXCELLENT(0, R.string.weather_air_quality_excellent),//优
     AIR_QUALITY_GOOD(1, R.string.weather_air_quality_good),//良
-    AIR_QUALITY_MEDIUM(2, R.string.weather_air_quality_medium),//中
-    AIR_QUALITY_POOR(3, R.string.weather_air_quality_poor)//差
+    AIR_QUALITY_SLIGHTLY(2, R.string.weather_air_quality_slightly),//轻度
+    AIR_QUALITY_HEAVY(3, R.string.weather_air_quality_heavy)//重度
 }

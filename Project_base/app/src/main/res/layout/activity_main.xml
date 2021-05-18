@@ -4,21 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#22000000">
+    android:background="#22000000"
+    tools:context=".MainActivity">
 
-    <com.cj.common.widget.WeatherLineChartView
+    <com.cj.common.widget.weather.WeatherLineChartView
         android:id="@+id/weather_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:fadeScrollbars="false"
         tools:ignore="MissingConstraints"
-        android:background="@color/white">
-        <com.cj.common.widget.Weather24HoursView
+        android:visibility="gone">
+
+        <com.cj.common.widget.weather.Weather24HoursView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:wind_power_label_text_color="@android:color/holo_red_dark"
-            android:layout_margin="@dimen/padding_or_margin_10dp"/>
-    </com.cj.common.widget.WeatherLineChartView>
+            android:layout_margin="@dimen/padding_or_margin_10dp"
+            app:wind_power_label_text_color="@android:color/holo_red_dark" />
+    </com.cj.common.widget.weather.WeatherLineChartView>
+
+    <com.cj.common.widget.weather.WeatherLineChartView
+        android:id="@+id/weather_15_days_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fadeScrollbars="false"
+        app:layout_constraintTop_toBottomOf="@id/weather_view"
+        tools:ignore="MissingConstraints">
+
+        <com.cj.common.widget.weather.Weather15DaysView
+            android:id="@+id/weather_15_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_or_margin_10dp"
+            app:wind_direction_text_size="@dimen/text_size_12sp"
+            app:wind_power_text_size="@dimen/text_size_12sp"
+            app:air_quality_text_size="@dimen/text_size_12sp"
+            />
+    </com.cj.common.widget.weather.WeatherLineChartView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
-package com.cj.common.widget
+package com.cj.common.widget.weather
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
@@ -34,9 +33,8 @@ import kotlin.properties.Delegates
  * @author CJ
  * @date 2021/5/11 19:08
  */
-@SuppressLint("Recycle")
 class Weather24HoursView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
-    View(context, attrs, defStyleAttr) {
+    View(context, attrs, defStyleAttr), IWeatherLineChartView<Weather24HoursInfo> {
 
     companion object {
         private const val TAG = "Weather24HoursView"
@@ -167,13 +165,15 @@ class Weather24HoursView(context: Context, attrs: AttributeSet?, defStyleAttr: I
         }
     }
 
+    override fun setScrollOffset(scrollOffset: Int, maxScrollOffset: Int) {
+        mMaxScrollOffset = maxScrollOffset - marginStart //marginStart与滑动最大距离有个，marginEnd无影响
+        mScrollOffset = scrollOffset
+        mCurrentIndex = calculateItemIndex()
+        Log.i(TAG, "当前位置 ： $mCurrentIndex ,滑动距离：$mScrollOffset , 最大滑动距离 ：$mMaxScrollOffset")
+        invalidate()
+    }
 
-    /**
-     * 更新数据
-     *
-     * @data 24小时天气信息
-     */
-    fun updateData(data: Weather24HoursInfo) {
+    override fun setWeatherData(data: Weather24HoursInfo?) {
         mData = data
         mData?.run {
             mMinTemperature = minTemperature
@@ -181,17 +181,6 @@ class Weather24HoursView(context: Context, attrs: AttributeSet?, defStyleAttr: I
             mCurrentTime = currentTime
             mWindPowerList = windPowerList
         }
-        invalidate()
-    }
-
-    /**
-     * 设置scrollerView的滚动条的位置，通过位置计算当前的时段
-     */
-    fun setScrollOffset(scrollOffset: Int, maxScrollOffset: Int) {
-        mMaxScrollOffset = maxScrollOffset - marginStart //marginStart与滑动最大距离有个，marginEnd无影响
-        mScrollOffset = scrollOffset
-        mCurrentIndex = calculateItemIndex()
-        Log.i(TAG, "当前位置 ： $mCurrentIndex ,滑动距离：$mScrollOffset , 最大滑动距离 ：$mMaxScrollOffset")
         invalidate()
     }
 
@@ -362,9 +351,10 @@ class Weather24HoursView(context: Context, attrs: AttributeSet?, defStyleAttr: I
         mAirQualityRoundRectRadius = mAirQualityBoxHeight * 0.5f
         mWeatherPopupWindowRoundRectRadius = mWeatherPopupWindowHeight * 0.5f
 
-        mWidth = (mYLabelWidth + (mXScaleSize * (mData?.run { hourlyWeatherInfoList.size }
-            ?: getScreenWidth())) + DEFAULT_SEPARATOR * 2 + paddingStart
-                + paddingEnd + marginStart + marginEnd).toInt()
+        mWidth = mData?.run {
+            (mYLabelWidth + mXScaleSize * hourlyWeatherInfoList.size + DEFAULT_SEPARATOR * 2
+                    + paddingStart + paddingEnd + marginStart + marginEnd).toInt()
+        } ?: getScreenWidth()
         mHeight = (DEFAULT_SEPARATOR + mTimeTextHeight + mWindPowerBoxHeight
                 + DEFAULT_SEPARATOR + mAirQualityBoxHeight + DEFAULT_SEPARATOR
                 + mTemperatureBoxHeight + mWeatherPopupWindowTextHeight + DEFAULT_SEPARATOR
@@ -627,7 +617,7 @@ class Weather24HoursView(context: Context, attrs: AttributeSet?, defStyleAttr: I
 
                     drawableWeatherIcon(this,
                         ((nextPoint.x + startPoint.x) * 0.5).toInt(),
-                        (y + mTemperatureBoxHeight).toInt(),
+                        (mAirQualityStartY - mAirQualityBoxHeight - mTemperatureBoxHeight * 0.5f).toInt(),
                         weatherIcon.iconRes)
 
                     indexList.clear()
@@ -663,7 +653,7 @@ class Weather24HoursView(context: Context, attrs: AttributeSet?, defStyleAttr: I
             if (this is BitmapDrawable) {
                 val left = (x - bitmap.width * 0.5).toInt()
                 val right = left + bitmap.width
-                val bottom = y + bitmap.width
+                val bottom = y + bitmap.height
                 val rectImage = Rect(left, y, right, bottom)
                 bounds = rectImage
                 draw(canvas)
@@ -801,18 +791,18 @@ class Weather24HoursView(context: Context, attrs: AttributeSet?, defStyleAttr: I
                     getColor(R.color.air_quality_good_unselected)
                 }
             }
-            EnumAirQuality.AIR_QUALITY_MEDIUM -> {
+            EnumAirQuality.AIR_QUALITY_SLIGHTLY -> {
                 color = if (isSelected) {
-                    getColor(R.color.air_quality_medium_selected)
+                    getColor(R.color.air_quality_slightly_selected)
                 } else {
-                    getColor(R.color.air_quality_medium_unselected)
+                    getColor(R.color.air_quality_slightly_unselected)
                 }
             }
-            EnumAirQuality.AIR_QUALITY_POOR -> {
+            EnumAirQuality.AIR_QUALITY_HEAVY-> {
                 color = if (isSelected) {
-                    getColor(R.color.air_quality_poor_selected)
+                    getColor(R.color.air_quality_heavy_selected)
                 } else {
-                    getColor(R.color.air_quality_poor_unselected)
+                    getColor(R.color.air_quality_heavy_unselected)
                 }
             }
         }

@@ -1,12 +1,13 @@
-package com.cj.common.widget
+package com.cj.common.widget.weather
 
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.HorizontalScrollView
-import com.cj.common.bean.Weather24HoursInfo
 import com.cj.framework.utils.getScreenWidth
 
 /**
@@ -19,7 +20,6 @@ class WeatherLineChartView(context: Context, attrs: AttributeSet?, defStyleAttr:
     HorizontalScrollView(context, attrs, defStyleAttr) {
 
     private var mChildView: View? = null
-    private var mData: Any? = null
 
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
@@ -32,28 +32,27 @@ class WeatherLineChartView(context: Context, attrs: AttributeSet?, defStyleAttr:
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        draw()
+        scrollOffset()
     }
 
-    private fun draw() {
+    private fun scrollOffset() {
         val scrollOffset: Int = computeHorizontalScrollOffset()
         val maxScrollOffset: Int = computeHorizontalScrollRange() - getScreenWidth()
         mChildView?.let {
-            when (it) {
-                is Weather24HoursView -> {
-                    it.setScrollOffset(scrollOffset, maxScrollOffset)
-                }
+            if (it is IWeatherLineChartView<*>) {
+                it.setScrollOffset(scrollOffset, maxScrollOffset)
             }
         }
     }
 
-    fun setWeather24HoursData(data: Weather24HoursInfo) {
-        mData = data
+    @Suppress("UNCHECKED_CAST")
+    fun <T> setWeatherData(data: T) {
         mChildView?.let {
-            if (it is Weather24HoursView) {
-                it.updateData(data)
+            if (it is IWeatherLineChartView<*>) {
+                (it as IWeatherLineChartView<T>).setWeatherData(data)
                 invalidate()
             }
         }
     }
+
 }
